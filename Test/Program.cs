@@ -11,6 +11,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
+            LocalMultithread.MakeItReal();
             Multithread.MakeItReal();
             Customer c = new Customer("Test");
             Console.WriteLine("Waiting to get values from Orders");

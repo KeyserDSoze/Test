@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Test.Laziness
 {
-    public class MUltithread
+    public class Multithread
     {
         public static void MakeItReal()
         {
