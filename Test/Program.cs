@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Test.Laziness;
+using Test.ImplicitOper;
+using System.Collections.Generic;
 
 namespace Test
 {
@@ -11,6 +9,17 @@ namespace Test
     {
         static void Main(string[] args)
         {
+            string value = "o";
+            ImplicitOperator implicitOperator = value;
+            Console.WriteLine("implicitOperator.C: " + implicitOperator.C);
+            implicitOperator += "3";
+            Console.WriteLine("implicitOperator.S: " + implicitOperator.S.Count.ToString() + " with values: " + string.Join(",", implicitOperator.S));
+            List<string> listOfValues = new List<string>();
+            listOfValues.Add("a");
+            listOfValues.Add("b");
+            implicitOperator += listOfValues;
+            Console.WriteLine("implicitOperator.S: " + implicitOperator.S.Count.ToString() + " with values: " + string.Join(",", implicitOperator.S));
+            Console.WriteLine("implicitOperator finds: " + implicitOperator.FindValue("a"));
             LocalMultithread.MakeItReal();
             Multithread.MakeItReal();
             Customer c = new Customer("Test");
