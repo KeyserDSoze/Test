@@ -24,7 +24,7 @@ namespace Test
             examples.Add("a");
             examples.Add("b");
             examples.Add("c");
-            Console.WriteLine(examples.FindX("a"));    
+            Console.WriteLine(examples.FindX("a")); //output first "a" by descending
             LocalMultithread.MakeItReal();
             Multithread.MakeItReal();
             Customer c = new Customer("Test");
