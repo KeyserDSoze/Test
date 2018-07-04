@@ -30,5 +30,19 @@ namespace Test.ImplicitOper
         {
             return source.S.Find(ø => ø.Equals(value));
         }
+        public static string FindX(this List<string> source, string t)
+        {
+            return source.OrderByDescending(ø => ø).ToList().Find(ø => ø.Equals(t));
+        }
+        public static List<Post> FindNotDeleted(this List<Post> source, string t)
+        {
+            return source.FindAll(ø => !ø.IsDeleted && ø.Message.Contains(t));
+        }
+    }
+
+    public class Post
+    {
+        public string Message { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

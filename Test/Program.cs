@@ -20,6 +20,11 @@ namespace Test
             implicitOperator += listOfValues;
             Console.WriteLine("implicitOperator.S: " + implicitOperator.S.Count.ToString() + " with values: " + string.Join(",", implicitOperator.S));
             Console.WriteLine("implicitOperator finds: " + implicitOperator.FindValue("a"));
+            List<string> examples = new List<string>();
+            examples.Add("a");
+            examples.Add("b");
+            examples.Add("c");
+            Console.WriteLine(examples.FindX("a"));    
             LocalMultithread.MakeItReal();
             Multithread.MakeItReal();
             Customer c = new Customer("Test");
