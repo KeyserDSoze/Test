@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Test.CSharpV1
 {
     [Serializable] //attributem it's possible to create a custom attribute, it's possible to upload a dll with params [DllImport("user32.dll", ExactSpelling=false, SetLastError=false)]
-    public class Versione1
+    public class Version1
     {
-        public Versione1()
+        public Version1()
         {
             Class @class = new Class()
             {
