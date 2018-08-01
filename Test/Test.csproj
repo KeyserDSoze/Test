@@ -45,6 +45,7 @@
     <Compile Include="CovarianceControvariance\Animal.cs" />
     <Compile Include="CovarianceControvariance\Fruit.cs" />
     <Compile Include="CovarianceControvariance\Person.cs" />
+    <Compile Include="CSharpV1\Versione1.cs" />
     <Compile Include="ImplicitOperator\ImplicitOperator.cs" />
     <Compile Include="Laziness\Customer.cs" />
     <Compile Include="Laziness\LocalMultithread.cs" />
