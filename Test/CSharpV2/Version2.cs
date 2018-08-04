@@ -19,6 +19,8 @@ namespace Test.CSharpV2
             var keywords = new CSharpBuiltInTypes(); //instantiate an iterator class
             Console.WriteLine("First Iterator Elements: " + keywords.First()); //take first element
             Console.WriteLine(String.Join(",", StaticClass.EvenSequence(5, 49)));  //call method that return the even number list between 5 and 49
+            Func<object> del = StaticClass.GetString;  // Covariance. A delegate specifies a return type as object, but you can assign a method that returns a string.  
+            Action<string> del2 = StaticClass.SetObject; // Contravariance. A delegate specifies a parameter type as string, but you can assign a method that takes an object.
         }
     }
     public delegate void ExampleDelegate<T>(T x) where T : IExample;   //delegate with a generic parameter T
@@ -28,6 +30,12 @@ namespace Test.CSharpV2
     }
     public static class StaticClass
     {
+        public static object GetObject() { return null; }
+        public static void SetObject(object obj) { }
+
+        public static string GetString() { return ""; }
+        public static void SetString(string str) { }
+
         public static void StaticMethod(IExample x)
         {
             Console.WriteLine("Static Method Called!!!");

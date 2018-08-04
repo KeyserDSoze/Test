@@ -65,6 +65,55 @@ namespace Test.CSharpV1
             dynamic dyn = new Class();  //object at runtime, it's possible to invoke method or get/set properties and other
             dyn.Method();
             #endregion
+            #region
+            bool checkForIt = true;
+            while (checkForIt)
+            {
+                checkForIt = false;
+                goto label;
+                Console.WriteLine("code that isn't executing");
+            }
+            label: Console.WriteLine("go here");
+            foreach (string s in new string[2] { "a", "b" })
+            {
+                if (s == "b")
+                {
+                    break;
+                }
+            }
+            do
+            {
+                Console.WriteLine("do while checking");
+            } while (checkForIt);
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine(string.Format("normal iteration in for: {0} and a test {1}", i.ToString(), "of string format"));
+            }
+            #endregion
+            #region cast and conversion
+            object[] objArray = new object[6];
+            objArray[0] = new Object();
+            objArray[1] = new Object();
+            objArray[2] = "Hello World";
+            objArray[3] = 123;
+            objArray[4] = 123.4;
+            objArray[5] = null;
+
+            for (int i = 0; i < objArray.Length; ++i)
+            {
+                string s = objArray[i] as string;  //cast null if it doesn't match
+                //string k = (string)objArray[i];   //it's a normal cast, but in this case during runtime it throws a new exception when it tries to cast any kind of non-string types
+                Console.Write("{0}:", i);
+                if (s != null)
+                {
+                    Console.WriteLine(" is a string '" + s + "'");
+                }
+                else
+                {
+                    Console.WriteLine(" is not a string");
+                }
+            }
+            #endregion
         }
 
         //public static unsafe void UnsafeTest()
@@ -101,7 +150,7 @@ namespace Test.CSharpV1
         public event FunctionDelegate DelegationAsEvent;
 
         //create a property
-        public string Property { get; set; }
+        public string Property { get; set; } //to be honest this auto implementation of properties through { get; set; } is real since C# 3.0
         public Class() { }
         public Class(string param)
         {
