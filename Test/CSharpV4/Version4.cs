@@ -41,6 +41,15 @@ namespace Test.CSharpV4
             // Covariant return type and contravariant parameter type.
             Func<MoreDerived, Base> f6 = f5;
             Base t1 = f2(new MoreDerived());
+            //Contravariant interface and methods
+            FirstImplementation<Base> firstImplementation = new FirstImplementation<Base>();
+            firstImplementation.Update(new MoreDerived());
+            firstImplementation.Set(new MoreDerived());
+            //Covariant interface and methods
+            SecondImplementation<MoreDerived> secondImplementation = new SecondImplementation<MoreDerived>();
+            Base @base = secondImplementation.Get();
+            // https://docs.microsoft.com/it-it/dotnet/standard/generics/covariance-and-contravariance
+            //it also was added embedded interop types // https://stackoverflow.com/questions/20514240/whats-the-difference-setting-embed-interop-types-true-and-false-in-visual-studi
         }
         public static Derived MyMethod(Base b)   //covariant method
         {
@@ -76,5 +85,33 @@ namespace Test.CSharpV4
     public class Base { }
     public class Derived : Base { }
     public class MoreDerived : Derived { }
+    public interface IContravariant<in T>
+    {
+        void Set(T t);
+        void Update(T t);
+    }
+    public class FirstImplementation<T> : IContravariant<T>
+    {
+        public void Set(T t)
+        {
+            
+        }
 
+        public void Update(T t)
+        {
+            
+        }
+    }
+    public interface ICovariant<out T>
+    {
+        T Get();
+        //void Update(T t);   //return a compiler error, you cannot pass a parameter covariant to a method in interface
+    }
+    public class SecondImplementation<T> : ICovariant<T>
+    {
+        public T Get()
+        {
+            return default(T);  // you can return in higher c# simply default --> return default;
+        }
+    }
 }

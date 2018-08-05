@@ -15,6 +15,13 @@ namespace Test.CSharpV1
             {
                 Property = "Sample"         //set a property
             };
+            string sampleString = "string in memory";
+            @class.RefMethod(ref sampleString);   //pass a referenced variable to a method
+            Console.WriteLine("Ref param value: " + sampleString);  //now it's changed here too
+            @class.InMethod(sampleString);
+            @class.OutMethod(out sampleString);
+            Console.WriteLine("out param value: " + sampleString);  //now it's re-assigned in OutMethod
+            @class.ParamsMethod(sampleString, sampleString, sampleString);  //you can pass any number of objects
             EventHandler<string> onFire = (sender, eventArgs) => Console.WriteLine(eventArgs); // create an event
             @class.Event += onFire; //subscribe an event
             @class.Event -= onFire; //unsubscribe an event
@@ -65,7 +72,7 @@ namespace Test.CSharpV1
             dynamic dyn = new Class();  //object at runtime, it's possible to invoke method or get/set properties and other
             dyn.Method();
             #endregion
-            #region
+            #region cycling break and goto
             bool checkForIt = true;
             while (checkForIt)
             {
@@ -116,18 +123,21 @@ namespace Test.CSharpV1
             #endregion
         }
 
-        //public static unsafe void UnsafeTest()
-        //{
-        //    Point pt = new Point();
-        //    Point* pp = &pt;
-        //    pp->x = 123;
-        //    pp->y = 456;
-        //    Console.WriteLine("{0} {1}", pt.x, pt.y);
-        //}
-        //struct Point
-        //{
-        //    public int x, y;
-        //}
+        static string A; //memorized in Managed Heap like a pointer for anyone uses it
+        string B; //memorized in Heap the value but this class and string B is memorized in Stack (the structure)
+        public static unsafe void UnsafeTest() //pointer in C# to manage the Heap
+        {
+            Point pt = new Point();
+            Point* pp = &pt;
+            pp->x = 123;
+            pp->y = 456;
+            Console.WriteLine("{0} {1}", pt.x, pt.y);
+        }
+        //https://www.c-sharpcorner.com/article/C-Sharp-heaping-vs-stacking-in-net-part-i/
+        struct Point
+        {
+            public int x, y;
+        }
     }
     public interface IInterface
     {
@@ -165,7 +175,7 @@ namespace Test.CSharpV1
         {
             this.DelegatedFunction?.Invoke(this); //call a delegated method
         }
-        public void AddDelegate(params FunctionDelegate[] delegatedFunctions) //method to add one or more delegate of the same type //with params i can pass many parameters to my method
+        public void AddDelegate(params FunctionDelegate[] delegatedFunctions) //method to add one or more delegate of the same type
         {
             this.DelegatedFunction = delegatedFunctions.First();
             foreach (FunctionDelegate delegateFunction in delegatedFunctions.Skip(1)) this.DelegatedFunction += delegateFunction;
@@ -173,6 +183,27 @@ namespace Test.CSharpV1
         private static void DefaultDelegateFunction(Class @class)
         {
             Console.WriteLine("Delegate to see value of property: " + @class.Property);
+        }
+        public void RefMethod(ref string param)
+        {
+            param += " passed here"; //if you change value of param here, you'll find it changed in method that called it
+        }
+        public void InMethod(in string param)
+        {
+            //param += " passed here";   //with modifier "in" it's not possible to change the param in method
+        }
+        public void OutMethod(out string param)
+        {
+            param = "changed here";  //you must assign before of all
+            param += " after you can add any value"; //and after you can change it
+            //you find this value in method that called it without needing to use return
+        }
+        public void ParamsMethod(params string[] @params)  //with params i can pass many parameters to my method
+        {
+            foreach(string param in @params)
+            {
+                Console.WriteLine("inserted " + param);
+            }
         }
     }
     //struct, like a class but more light
