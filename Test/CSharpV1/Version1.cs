@@ -188,7 +188,7 @@ namespace Test.CSharpV1
         {
             param += " passed here"; //if you change value of param here, you'll find it changed in method that called it
         }
-        public void InMethod(in string param)
+        public void InMethod(in string param) //from C# 7.2
         {
             //param += " passed here";   //with modifier "in" it's not possible to change the param in method
         }

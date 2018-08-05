@@ -61,6 +61,7 @@
     <Compile Include="CSharpV4\Version4.cs" />
     <Compile Include="CSharpV5\Version5.cs" />
     <Compile Include="CSharpV6\Version6.cs" />
+    <Compile Include="CSharpV7+\Version7Plus.cs" />
     <Compile Include="CSharpV7\Version7.cs" />
     <Compile Include="ImplicitOperator\ImplicitOperator.cs" />
     <Compile Include="Laziness\Customer.cs" />
