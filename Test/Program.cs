@@ -2,10 +2,15 @@
 using Test.Laziness;
 using Test.ImplicitOper;
 using System.Collections.Generic;
-using Test.CSharpV5;
 using System.Threading.Tasks;
+using Test.CSharpV1;
+using Test.CSharpV2;
+using Test.CSharpV3;
+using Test.CSharpV4;
+using Test.CSharpV5;
 using Test.CSharpV6;
 using Test.CSharpV7;
+using Test.CSharpV7_;
 
 namespace Test
 {
@@ -13,10 +18,31 @@ namespace Test
     {
         static async Task Main(string[] args) //async main from C# 7.1
         {
+            //await First();
+            //await Second();
+            //await Third();
+            //await Fourth();
             //await Fifth();
             //await Sixth();
-            await Seventh();
+            //await Seventh();
+            await SeventhPlus();
             Console.ReadLine();
+        }
+        static async Task First()
+        {
+            Version1 version1 = new Version1();
+        }
+        static async Task Second()
+        {
+            Version2 version2 = new Version2();
+        }
+        static async Task Third()
+        {
+            Version3 version3 = new Version3();
+        }
+        static async Task Fourth()
+        {
+            Version4 version4 = new Version4();
         }
         static async Task Fifth()
         {
@@ -32,8 +58,11 @@ namespace Test
         {
             Version7 version7 = new Version7();
         }
-
-        static void First()
+        static async Task SeventhPlus()
+        {
+            Version7Plus version7plus = new Version7Plus();
+        }
+        static void Zero()
         {
             string value = "o";
             ImplicitOperator implicitOperator = value;
