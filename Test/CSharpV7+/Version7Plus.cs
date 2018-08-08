@@ -28,6 +28,18 @@ namespace Test.CSharpV7_
             Console.WriteLine("There are two new compiler options that generate reference-only assemblies: /refout and /refonly.");
             #endregion
             #region C# 7.2
+            // The method can be called in the normal way, by using positional arguments.
+            PrintOrderDetails("Gift Shop", 31, "Red Mug");
+            // Named arguments can be supplied for the parameters in any order.
+            PrintOrderDetails(orderNum: 31, productName: "Red Mug", sellerName: "Gift Shop");
+            PrintOrderDetails(productName: "Red Mug", sellerName: "Gift Shop", orderNum: 31);
+            // Named arguments mixed with positional arguments are valid
+            // as long as they are used in their correct position.
+            PrintOrderDetails("Gift Shop", 31, productName: "Red Mug");
+            // C# 7.2 onwards
+            PrintOrderDetails(sellerName: "Gift Shop", 31, productName: "Red Mug");  //position counts
+            PrintOrderDetails("Gift Shop", orderNum: 31, "Red Mug");
+
             ReadOnlyStruct readOnlyStruct = new ReadOnlyStruct();
             RefStruct refStruct = new RefStruct();
             Set(readOnlyStruct, refStruct);
@@ -45,6 +57,10 @@ namespace Test.CSharpV7_
         public static void Set(ReadOnlyStruct readOnlyStruct, RefStruct refStruct)
         {
             Console.WriteLine("Calling Set");
+        }
+        static void PrintOrderDetails(string sellerName, int orderNum, string productName)
+        {
+            Console.WriteLine($"{sellerName}-{orderNum}-{productName}");
         }
     }
     public class ReferenceSemantics
