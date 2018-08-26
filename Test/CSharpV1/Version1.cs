@@ -34,8 +34,8 @@ namespace Test.CSharpV1
             bool? boolNullable = null; //as before it's valid for primitive too
             string NullReference = boolNullable?.ToString();  //avoid null reference
             #region conditions
-            if((boolNullable == true | boolNullable == false) & (boolNullable == true | boolNullable == false)) { } // with | (logic or) and & (logic and) i check al the expression
-            if ((boolNullable == true || boolNullable == false) && (boolNullable == true | boolNullable == false)) { } // with || (logic or) and && (logic and) i check al the expression until it's true
+            if((boolNullable == true | boolNullable == false) & (boolNullable == true | boolNullable == false)) { } // with | (logic or) and & (logic and) i check all the expression
+            if ((boolNullable == true || boolNullable == false) && (boolNullable == true | boolNullable == false)) { } // with || (logic or) and && (logic and) i check all the expression until it's true
             #endregion
             #region operations
             int x = 1;
