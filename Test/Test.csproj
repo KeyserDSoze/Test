@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassVsStruct\ClassVsStruct.cs" />
     <Compile Include="CovarianceControvariance\Animal.cs" />
     <Compile Include="CovarianceControvariance\Fruit.cs" />
     <Compile Include="CovarianceControvariance\Person.cs" />
