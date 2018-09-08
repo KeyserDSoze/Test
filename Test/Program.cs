@@ -11,6 +11,7 @@ using Test.CSharpV5;
 using Test.CSharpV6;
 using Test.CSharpV7;
 using Test.CSharpV7_;
+using Test.ClassVsAbstractClass;
 
 namespace Test
 {
@@ -25,7 +26,8 @@ namespace Test
             //await Fifth();
             //await Sixth();
             //await Seventh();
-            await SeventhPlus();
+            //await SeventhPlus();
+            var x = MythOfCave.Instance;
             Console.ReadLine();
         }
         static async Task First()

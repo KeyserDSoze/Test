@@ -146,7 +146,10 @@ namespace Test.CSharpV1
     }
     public abstract class Abastract
     {
-
+        public virtual void MakeSomething()
+        {
+            Console.WriteLine("Make it");
+        }
     }
     //creation deletage
     public delegate void FunctionDelegate(Class @class);
@@ -170,10 +173,14 @@ namespace Test.CSharpV1
         {
             this.Event?.Invoke(this, "Fire Event!"); //fire an event
         }
-
         public void Method(string param)
         {
             this.DelegatedFunction?.Invoke(this); //call a delegated method
+        }
+        public override void MakeSomething()
+        {
+            Console.WriteLine("Special Make it");
+            base.MakeSomething();
         }
         public void AddDelegate(params FunctionDelegate[] delegatedFunctions) //method to add one or more delegate of the same type
         {

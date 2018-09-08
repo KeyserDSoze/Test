@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassVsAbstractClass\MythOfCave.cs" />
     <Compile Include="ClassVsStruct\ClassVsStruct.cs" />
     <Compile Include="CovarianceControvariance\Animal.cs" />
     <Compile Include="CovarianceControvariance\Fruit.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="CSharpV6\Version6.cs" />
     <Compile Include="CSharpV7+\Version7Plus.cs" />
     <Compile Include="CSharpV7\Version7.cs" />
+    <Compile Include="FieldMethodProperty\FieldMethodProperty.cs" />
     <Compile Include="ImplicitOperator\ImplicitOperator.cs" />
     <Compile Include="Laziness\Customer.cs" />
     <Compile Include="Laziness\LocalMultithread.cs" />
