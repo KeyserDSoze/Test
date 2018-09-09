@@ -18,7 +18,7 @@ namespace Test.Power
                 concretionSpecificApi.Pay(4);
                 concretionSpecificApi.GetService(1);
                 concretionSpecificApi.ToString();
-                UserCheck userCheck = new UserCheck(new List<IHasCustomerBase> { new Api() /*, AnotherApi(), OtherApi()*/ });
+                UserCheck userCheck = new UserCheck(new List<IHasCustomerBase> { new Api(), new AnotherApi() /*, new OtherApi()*/ });
                 Console.WriteLine("Exists? "+ userCheck.UserExists("example"));
                 return null;
             }
@@ -66,6 +66,25 @@ namespace Test.Power
         public override void pay(double x)
         {
             Console.WriteLine("Something, more specific than abstraction");
+        }
+    }
+    public class AnotherApi : AApi, IHasCustomerBase, IHasService
+    {
+        public List<(string, string)> GetCustomerBase()
+        {
+            Console.WriteLine("Get another CB");
+            return (new List<(string, string)> { ("example3", "user3"), ("example4", "user4") }); //create a list of 2 users
+        }
+
+        public List<(int, Dictionary<string, string>)> GetService()
+        {
+            Console.WriteLine("Get another Service");
+            return (new List<(int, Dictionary<string, string>)> { (3, new Dictionary<string, string>()), (4, new Dictionary<string, string>()) }); //create a list of 2 services
+        }
+
+        public override void pay(double x)
+        {
+            Console.WriteLine("Something, more specific than abstraction but not equals to Api, for example it could be a call to an external webservice");
         }
     }
     public class FinalApi
