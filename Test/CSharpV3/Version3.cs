@@ -68,7 +68,7 @@ namespace Test.CSharpV3
         partial void OnSomethingHappened(string s);  //partial method has same signatures, must return void, no access modifiers are allowed, are implicitly private
     }
 
-    // This part can be in a separate file.
+    // This part can be in a separate file but in the same namespace of other partial class A
     partial class A
     {
         // Comment out this method and the program will still compile.
