@@ -27,7 +27,8 @@ namespace Test
             //await Sixth();
             //await Seventh();
             //await SeventhPlus();
-            var x = MythOfCave.Instance;
+            //var x = MythOfCave.Instance;
+            var x = Power.PowerApi.Instance;
             Console.ReadLine();
         }
         static async Task First()
